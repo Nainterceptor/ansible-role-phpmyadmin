@@ -26,6 +26,14 @@
   notify:
     - "Restart Apache"
 
+- name: "Copy php.ini file"
+  copy:
+    src: "../files/php.ini"
+    dest: "/etc/php.ini"
+  when: ansible_distribution == 'CentOS'
+  notify:
+    - "Restart Apache"
+
 - name: "Copy phpMyAdmin config file"
   template:
     src: "../files/config.inc.php.j2"
